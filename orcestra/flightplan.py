@@ -465,7 +465,7 @@ def _az_towards_point_with_angle(A, B, alpha, radius):
     return res.x[0]
 
 
-@dataclass
+@dataclass(frozen=True)
 class IntoCircle:
     center: LatLon
     radius: float
