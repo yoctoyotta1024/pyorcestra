@@ -467,10 +467,15 @@ def _az_towards_point_with_angle(A, B, alpha, radius):
 
 @dataclass(frozen=True)
 class IntoCircle:
-    center: LatLon
+    anchor: LatLon
     radius: float
     angle: float
     enter: Optional[float] = None
+    anchor_position: str = "center"
+
+    @cached_property
+    def center(self):
+        return self.anchor
 
     def __post_init__(self):
         assert (
